@@ -10,23 +10,20 @@
 <div id="testData"></div>
 </body>
 <script>
+    var url = "http://api.randomuser.me/?nat=US";
     function getJSON(url){
         var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                var myArr = JSON.parse(xmlhttp.responseText);
-                return myArr;
-            }
-        }}
+        xmlhttp.open("GET", url, false);
+        xmlhttp.send(null);
+        return xmlhttp.responseText;
+    }
 
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
+
     function exec(){
-        var url = "http://api.randomuser.me/?nat=US";
         //var req = JSON.stringify(Mimicry);
-        var results = getJSON(url);
+        var results = JSON.parse(getJSON(url));
         var para = document.createElement("P");
-        var out = results.user.gender;
+        var out = results.results[0].user.gender;
         var t = document.createTextNode(out);
         para.appendChild(t);
         document.getElementById("testData").appendChild(para);}

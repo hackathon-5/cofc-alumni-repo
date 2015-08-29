@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <script src="superPowers.js"></script>
+    <!--Add the correct file name here-->
     <script src="Mimicry.js"></script>
     <title>Testing Page</title>
 </head>
@@ -13,11 +14,18 @@
     function exec(){
         var req = JSON.stringify(Mimicry);
         var results = getPowers(req);
-        var para = document.createElement("P");
-        var out = results.items[0].title;
-        var t = document.createTextNode(out);
-        para.appendChild(t);
-        document.getElementById("testData").appendChild(para);}
+
+        var powers = [];
+        var count = results.items.length;
+        while (count > 0){
+            count--;
+            var currentItem = [];
+            currentItem[0] = results.items[count].title;
+            currentItem[1] = results.items[count].title;
+            powers.push(currentItem);
+        }
+        var t = document.createTextNode(powers[9][0]);
+        document.getElementById("testData").innerHTML(powers[9][0]);}
     window.onload = exec();
 </script>
 </html>
