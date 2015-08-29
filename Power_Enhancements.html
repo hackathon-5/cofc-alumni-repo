@@ -22,9 +22,19 @@
 <body>
 
 <h1>Power Awesomeness</h1>
-
-<div id="Data"></div>
-
+<table style="width:100%">
+    <tr>
+        <td><button id="back" onclick="onclickBack()">Back</button>
+        </td>
+    </tr>
+    <tr>
+        <td><div id="Data"></div></td>
+    </tr>
+    <tr>
+        <td><button id="next" onclick="onclickNext()">Next</button>
+        </td>
+    </tr>
+</table>
 </body>
 <script>
     var output = exec(Enhancements);
@@ -35,7 +45,7 @@
     head = document.createElement("H2");
     para = document.createElement("P");
     var h = document.createTextNode(curPower);
-    var p = document.createTextNode("</br>"+curAbstract);
+    var p = document.createTextNode(curAbstract);
     head.appendChild(h);
     para.appendChild(p);
     document.getElementById("Data").appendChild(head);
@@ -50,11 +60,10 @@
         head = document.createElement("H2");
         para = document.createElement("P");
         var h = document.createTextNode(curPower);
-        var p = document.createTextNode("</br>"+curAbstract);
+        var p = document.createTextNode(curAbstract);
         head.appendChild(h);
         para.appendChild(p);
-        document.getElementById("Data").removeChild();
-        document.getElementById("Data").removeChild();
+        document.getElementById("Data").innerHTML = '';
         document.getElementById("Data").appendChild(head);
         document.getElementById("Data").appendChild(para);
     }
@@ -68,11 +77,10 @@
         head = document.createElement("H2");
         para = document.createElement("P");
         var h = document.createTextNode(curPower);
-        var p = document.createTextNode("</br>"+curAbstract);
+        var p = document.createTextNode(curAbstract);
         head.appendChild(h);
         para.appendChild(p);
-        document.getElementById("Data").removeChild();
-        document.getElementById("Data").removeChild();
+        document.getElementById("Data").innerHTML = '';
         document.getElementById("Data").appendChild(head);
         document.getElementById("Data").appendChild(para);}
 </script>
