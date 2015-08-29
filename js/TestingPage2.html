@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="superPowers.js"></script>
+    <script src="Mimicry.js"></script>
+    <title>Testing Page</title>
+</head>
+<body>
+<div id="testData"></div>
+</body>
+<script>
+    function getJSON(url){
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                var myArr = JSON.parse(xmlhttp.responseText);
+                return myArr;
+            }
+        }}
+
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+    function exec(){
+        var url = "http://api.randomuser.me/?nat=US";
+        //var req = JSON.stringify(Mimicry);
+        var results = getJSON(url);
+        var para = document.createElement("P");
+        var out = results.user.gender;
+        var t = document.createTextNode(out);
+        para.appendChild(t);
+        document.getElementById("testData").appendChild(para);}
+    window.onload = exec();
+</script>
+</html>
