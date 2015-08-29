@@ -9,6 +9,8 @@
 
     <!-- Bootstrap and FontAwesome stuff-->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/superPowers.js"></script>
+    <script src="js/Enhancements.js"></script>
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -19,13 +21,63 @@
 </head>
 <body>
 
-
 <h1>Power Awesomeness</h1>
 
+<div id="Data"></div>
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
 </body>
+<script>
+    var output = exec(Enhancements);
+    var maxIndex = output.length - 1;
+    var curIndex = 0;
+    var curPower= output[curIndex][0];
+    var curAbstract = output[curIndex][1];
+    head = document.createElement("H2");
+    para = document.createElement("P");
+    var h = document.createTextNode(curPower);
+    var p = document.createTextNode("</br>"+curAbstract);
+    head.appendChild(h);
+    para.appendChild(p);
+    document.getElementById("Data").appendChild(head);
+    document.getElementById("Data").appendChild(para);
+    function onclickNext(){
+        curIndex++;
+        if (curIndex > maxIndex){
+            curIndex = 0;
+        }
+        var curPower= output[curIndex][0];
+        var curAbstract = output[curIndex][1];
+        head = document.createElement("H2");
+        para = document.createElement("P");
+        var h = document.createTextNode(curPower);
+        var p = document.createTextNode("</br>"+curAbstract);
+        head.appendChild(h);
+        para.appendChild(p);
+        document.getElementById("Data").removeChild();
+        document.getElementById("Data").removeChild();
+        document.getElementById("Data").appendChild(head);
+        document.getElementById("Data").appendChild(para);
+    }
+    function onclickBack(){
+        curIndex--;
+        if (curIndex < 0){
+            curIndex = maxIndex;
+        }
+        var curPower= output[curIndex][0];
+        var curAbstract = output[curIndex][1];
+        head = document.createElement("H2");
+        para = document.createElement("P");
+        var h = document.createTextNode(curPower);
+        var p = document.createTextNode("</br>"+curAbstract);
+        head.appendChild(h);
+        para.appendChild(p);
+        document.getElementById("Data").removeChild();
+        document.getElementById("Data").removeChild();
+        document.getElementById("Data").appendChild(head);
+        document.getElementById("Data").appendChild(para);}
+</script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins)
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed
+<script src="js/bootstrap.min.js"></script>-->
 </html>
