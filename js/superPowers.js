@@ -13,5 +13,3 @@ function getPowers(selection){
     var json = JSON.parse(Get(selection));
     return json.toString();
 }
-
-var results = getPowers(0);
