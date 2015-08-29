@@ -10,6 +10,9 @@
     <!-- Bootstrap and FontAwesome stuff-->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!-- Stylesheets for this page -->
+    <link rel="stylesheet" href="css/Default.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -18,14 +21,50 @@
     <![endif]-->
 </head>
 <body>
+ <div class="header blue">
+     <h1>Alter Ego Awesomeness</h1>
+ </div>
+ <div class="jumbotron">
+     <h2>
+         Create your Secret Identity!
+     </h2>
+     <div>
+         Let's get started!
+     </div>
+     <p id="namePara">FirstName LastName</p>
+ </div>
+<p>
+ <button onclick="alterEgo(this.value)" value="male">Male</button> OR <button onclick="alterEgo(this.value)" value="female">Female</button>
+</p>
 
 
-<h1>Alter Ego Awesomeness</h1>
+
+
+
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
+<script>
+    function getJSON(url){
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("GET", url, false);
+        xmlhttp.send(null);
+        return xmlhttp.responseText;
+    }
+    function alterEgo(value){
+        //var req = JSON.stringify(Mimicry);
+        var url = "http://api.randomuser.me/?nat=US&gender=" + value;
+        var results = JSON.parse(getJSON(url));
+        var first = results.results[0].user.name.first;
+        var last = results.results[0].user.name.last;
+        var t = (first + " " + last);
+        var x = document.getElementById('namePara');
+        x.innerHTML = t;
+        x.style.textTransform = "capitalize"
+    }
+</script>
 </body>
 </html>

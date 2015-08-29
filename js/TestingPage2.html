@@ -7,10 +7,21 @@
     <title>Testing Page</title>
 </head>
 <body>
-<div id="testData"></div>
+
+
+<p id="namePara">Click on a Button</p>
+<button onclick="alterEgo(this.value)" value="male">Male</button>
+<button onclick="alterEgo(this.value)" value="female">Female</button>
+
+
+<div id="testData">
+</div>
+
+
+
 </body>
 <script>
-    var url = "http://api.randomuser.me/?nat=US";
+
     function getJSON(url){
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.open("GET", url, false);
@@ -19,14 +30,17 @@
     }
 
 
-    function exec(){
+    function alterEgo(value){
         //var req = JSON.stringify(Mimicry);
+        var url = "http://api.randomuser.me/?nat=US&gender=" + value;
         var results = JSON.parse(getJSON(url));
-        var para = document.createElement("P");
-        var out = results.results[0].user.gender;
-        var t = document.createTextNode(out);
-        para.appendChild(t);
-        document.getElementById("testData").appendChild(para);}
-    window.onload = exec();
+        var first = results.results[0].user.name.first;
+        var last = results.results[0].user.name.last;
+        var t = (first + " " + last);
+        var x = document.getElementById('namePara');
+        x.innerHTML = t;
+        x.style.textTransform = "capitalize"
+    }
+
 </script>
 </html>
