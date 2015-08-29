@@ -1,0 +1,10 @@
+# cofc-alumni-repo
+cofc-alumni-repo repository
+
+Project created for Sparc Gives hackathon 5
+Aug 28th - 30th 
+
+Topic for Hackathon DIY
+
+Project topic 
+Do it your self superhero builder. 
